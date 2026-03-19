@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mary — withmary.me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory: #F4F1EC;
+  --warm-white: #FAFAF7;
+  --obsidian: #111210;
+  --charcoal: #1E1F1C;
+  --sage: #8A9E8C;
+  --sage-light: #B8C9BA;
+  --sage-deep: #5C7260;
+  --gold: #B89A6A;
+  --gold-light: #D4B98A;
+  --gold-muted: #8A7050;
+  --warm-gray: #6B6860;
+  --mid-gray: #A8A49E;
+  --rule: rgba(139,130,118,0.18);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ivory);
+  color: var(--obsidian);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.25s; }
+.d3 { animation-delay: 0.4s; }
+.d4 { animation-delay: 0.55s; }
+.d5 { animation-delay: 0.7s; }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: rgba(244,241,236,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--obsidian);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  gap: 4rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,154,106,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; left: -5%;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,114,96,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-left { position: relative; z-index: 1; }
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 2rem;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--obsidian);
+  margin-bottom: 1.8rem;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.9;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 2rem; }
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  background: var(--obsidian);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: var(--charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(17,18,16,0.15);
+}
+
+.btn-secondary {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,154,106,0.3);
+  padding-bottom: 2px;
+  transition: all 0.25s;
+}
+.btn-secondary:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+.hero-right { position: relative; z-index: 1; }
+
+.stats-panel {
+  background: var(--warm-white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--obsidian);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-num span { color: var(--gold); font-size: 1.9rem; }
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  line-height: 1.5;
+}
+.stat-divider { grid-column: 1 / -1; height: 1px; background: var(--rule); }
+
+.section-divider { height: 1px; background: var(--rule); margin: 0 4rem; }
+
+section {
+  padding: 6rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--obsidian);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.section-title em { font-style: italic; color: var(--sage-deep); }
+.section-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.9;
+  max-width: 600px;
+  margin-bottom: 3.5rem;
+}
+
+.video-block {
+  background: var(--warm-white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.video-block:hover { border-color: rgba(184,154,106,0.4); box-shadow: 0 4px 24px rgba(184,154,106,0.08); }
+.play-btn {
+  width: 60px; height: 60px;
+  border: 1px solid rgba(17,18,16,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s; flex-shrink: 0;
+}
+.video-block:hover .play-btn { border-color: var(--gold); background: rgba(184,154,106,0.06); }
+.play-tri {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 16px;
+  border-color: transparent transparent transparent var(--obsidian);
+  margin-left: 4px; transition: border-color 0.3s;
+}
+.video-block:hover .play-tri { border-color: transparent transparent transparent var(--gold); }
+.video-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--obsidian);
+  margin-bottom: 0.3rem;
+}
+.video-sub {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--warm-white);
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+}
+.card:hover { background: var(--ivory); }
+
+.card-accent {
+  width: 28px; height: 2px;
+  margin-bottom: 1.5rem;
+  border-radius: 1px;
+  transition: width 0.3s;
+}
+.card:hover .card-accent { width: 44px; }
+.card-1 .card-accent { background: var(--gold); }
+.card-2 .card-accent { background: var(--sage-deep); }
+.card-3 .card-accent { background: var(--obsidian); }
+.card-4 .card-accent { background: var(--gold-muted); }
+.card-5 .card-accent { background: var(--sage); }
+
+.card-num {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--mid-gray);
+  margin-bottom: 0.8rem;
+}
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--obsidian);
+  margin-bottom: 0.8rem;
+  line-height: 1.25;
+}
+.card-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+.card-expand { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1); }
+.card.open .card-expand { max-height: 300px; }
+.card-expand-inner {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.85;
+}
+.card-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  transition: color 0.25s;
+}
+.card:hover .card-toggle { color: var(--warm-gray); }
+.toggle-plus {
+  width: 16px; height: 16px;
+  border: 1px solid var(--mid-gray);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: all 0.3s;
+}
+.card.open .toggle-plus { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+
+.philosophy-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.philosophy-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--obsidian);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 2rem;
+}
+.philosophy-quote::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.3rem;
+  width: 2px;
+  height: calc(100% - 0.3rem);
+  background: var(--gold);
+  border-radius: 1px;
+}
+.philosophy-text p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+.philosophy-text p:last-child { margin-bottom: 0; }
+
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.science-item {
+  padding: 2rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--warm-white);
+  transition: all 0.3s;
+}
+.science-item:hover { border-color: rgba(184,154,106,0.3); box-shadow: 0 4px 16px rgba(184,154,106,0.06); }
+.science-icon { width: 32px; height: 32px; margin-bottom: 1.2rem; opacity: 0.5; }
+.science-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--obsidian);
+  margin-bottom: 0.6rem;
+}
+.science-detail { font-size: 0.88rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+
+.pub-block {
+  background: var(--obsidian);
+  border-radius: 4px;
+  padding: 3.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+.pub-count {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.pub-label {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.4);
+  margin-bottom: 1.5rem;
+}
+.pub-desc { font-size: 0.95rem; font-weight: 300; color: rgba(244,241,236,0.6); line-height: 1.85; margin-bottom: 2rem; }
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,154,106,0.3);
+  padding-bottom: 2px;
+  transition: all 0.25s;
+}
+.pub-link:hover { border-bottom-color: var(--gold); gap: 0.9rem; }
+.pub-areas { display: flex; flex-direction: column; gap: 1rem; }
+.pub-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(244,241,236,0.04);
+  border: 1px solid rgba(244,241,236,0.07);
+  border-radius: 3px;
+}
+.pub-area-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.pub-area-dot-gold { background: var(--gold); }
+.pub-area-dot-sage { background: var(--sage); }
+.pub-area-dot-white { background: rgba(244,241,236,0.3); }
+.pub-area-name { font-size: 0.88rem; font-weight: 300; color: rgba(244,241,236,0.7); letter-spacing: 0.03em; }
+
+.creds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+.cred-item { background: var(--warm-white); padding: 2rem 1.5rem; transition: background 0.3s; }
+.cred-item:hover { background: var(--ivory); }
+.cred-category {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 0.8rem;
+}
+.cred-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--obsidian); line-height: 1.4; margin-bottom: 0.5rem; }
+.cred-detail { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
+
+.contact-section { background: var(--warm-white); border-top: 1px solid var(--rule); padding: 6rem 4rem; }
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: var(--obsidian);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.contact-title em { font-style: italic; color: var(--gold); }
+.contact-desc { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.9; margin-bottom: 2.5rem; max-width: 400px; }
+.contact-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--obsidian);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+.contact-email-link:hover { color: var(--gold); border-bottom-color: var(--gold); gap: 1.2rem; }
+.contact-note {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--mid-gray);
+  line-height: 1.8;
+  padding: 1.5rem;
+  border-left: 2px solid rgba(184,154,106,0.3);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+footer {
+  padding: 2rem 4rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--ivory);
+}
+.footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; color: var(--obsidian); text-decoration: none; }
+.footer-logo span { color: var(--gold); }
+.footer-copy { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.15em; color: var(--mid-gray); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 2rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; min-height: auto; gap: 3rem; }
+  section { padding: 4rem 2rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .philosophy-block { grid-template-columns: 1fr; gap: 3rem; }
+  .science-grid { grid-template-columns: 1fr; }
+  .pub-block { grid-template-columns: 1fr; padding: 2.5rem 2rem; gap: 2rem; }
+  .creds-grid { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .section-divider { margin: 0 2rem; }
+  footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">with<span>mary</span>.me</a>
+  <ul class="nav-links">
+    <li><a href="#approach">Approach</a></li>
+    <li><a href="#science">Science</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" style="padding-top:8rem; max-width:100%;">
+  <div class="hero-left">
+    <div class="hero-tag fade-up d1">Scientist · Coach · Natural Connector</div>
+    <h1 class="hero-title fade-up d2">
+      I build trust fast,<br>
+      simplify complex ideas,<br>
+      <em>and close.</em>
+    </h1>
+    <p class="hero-sub fade-up d3">
+      PhD scientist. Coach. Natural connector.<br>
+      I speak the language of researchers — and I know how to turn conversations into results.
+    </p>
+    <div class="hero-actions fade-up d4">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#approach" class="btn-secondary">See my approach</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up d3">
+    <div class="stats-panel">
+      <div class="stat-item">
+        <div class="stat-num">14<span>+</span></div>
+        <div class="stat-label">Active clients — 8 retained<br>for 12+ months</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">33<span>%</span></div>
+        <div class="stat-label">Consultation-to-client<br>conversion rate</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-label">Peer-reviewed<br>publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">PhD</div>
+        <div class="stat-label">Analytical Chemistry<br>University of Toronto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="approach">
+  <p class="section-eyebrow reveal">My approach</p>
+  <h2 class="section-title reveal">I don't sell.<br><em>I show people the gap.</em></h2>
+  <p class="section-intro reveal">
+    I build trust quickly by making people feel comfortable and understood from the start. I focus on learning real goals, current situations, and limitations — instead of giving everyone the same pitch. I give real value right away, explaining not just what but why. I never pressure anyone. Usually, once people see the gap between where they are and where they want to be, they decide they want ongoing guidance.
+  </p>
+
+  <div class="video-block reveal">
+    <div class="play-btn"><div class="play-tri"></div></div>
+    <div>
+      <div class="video-title">Meet Mary — 90 second introduction</div>
+      <div class="video-sub">Coming soon · Personal introduction</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="card card-1 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">01</div>
+      <div class="card-title">Scientific Credibility</div>
+      <div class="card-desc">Deep scientific expertise that opens doors. A background that makes technical conversations feel like conversations between colleagues.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          PhD in Analytical Chemistry with hands-on experience across multiple analytical platforms and workflows. Whether the conversation involves researchers, lab managers, or technical decision-makers — the depth is there. 
+        </div>
+      </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
+    </div>
+
+    <div class="card card-2 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">02</div>
+      <div class="card-title">Natural Closer</div>
+      <div class="card-desc">33% consultation-to-client conversion. 14 active clients. 6 continuously renewing. </div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Built an active client base through trust, patience, and genuine investment in results. 8 clients retained for over a year. 6 other clients continuously renewing. Clients consistently describe me as patient, thorough, and easy to trust — from the very first conversation.
+        </div>
+      </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
+    </div>
+
+    <div class="card card-3 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">03</div>
+      <div class="card-title">People First</div>
+      <div class="card-desc">New connections energize me. I build strong rapport quickly — and I thrive in environments where every conversation is a fresh start.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Across different sectors and very different contexts, the one constant has always been this: people feel understood from the first conversation. I am at my best when meeting new people, exploring new challenges, and building relationships from scratch. That is not something I work at — it is simply how I operate.
+        </div>
+      </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
+    </div>
+
+    <div class="card card-4 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">04</div>
+      <div class="card-title">Proven Adaptability</div>
+      <div class="card-desc">Multiple sectors. Multiple environments. Every time, I got up to speed fast and delivered.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          A career spanning research institutions, regulatory agencies, independent practice, and client-facing coaching. Each required learning new environments, new stakeholders, and new ways of communicating complex information clearly. Adaptability is not a trait I claim — it is a pattern across everything I have done.
+        </div>
+      </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
+    </div>
+
+    <div class="card card-5 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">05</div>
+      <div class="card-title">Teaching & Training</div>
+      <div class="card-desc">From graduate students to complete beginners — I make complex things clear, and I make them stick.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Trained scientists on analytical instruments and data interpretation at multiple institutions. Taught instrumental analysis courses in both face-to-face and online settings. Coached fitness clients of all backgrounds on technique, form, and progressive programming. Making the complex accessible is a thread that runs through all of it.
+        </div>
+      </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+  <div class="philosophy-block">
+    <div class="philosophy-quote reveal">
+      "I don't just tell people what to do — I help them understand why it matters, so they feel confident making the decision themselves."
+    </div>
+    <div class="philosophy-text reveal">
+      <p>This is the principle behind every consultation — whether explaining a new analytical method to a research team or helping a client understand their own body and what it needs.</p>
+      <p>Real trust is built when people feel genuinely understood, not managed. When someone walks away from a conversation feeling clearer and more confident — that is when the relationship begins.</p>
+      <p>Clarity and genuine investment in the other person's success. That is what every interaction looks like.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="science">
+  <p class="section-eyebrow reveal">Scientific Background</p>
+  <h2 class="section-title reveal">The science <em>behind</em><br>the conversation.</h2>
+  <p class="section-intro reveal">
+    Years of hands-on experience across metabolomics, NMR spectroscopy, and mass spectrometry — at leading institutions . A foundation that makes technical conversations feel natural, credible, and real.
+  </p>
+
+  <div class="science-grid">
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="12" stroke="#B89A6A" stroke-width="0.8" fill="none"/>
+        <circle cx="16" cy="16" r="6" stroke="#5C7260" stroke-width="0.6" fill="none" stroke-dasharray="2 2"/>
+        <circle cx="16" cy="16" r="2" fill="#B89A6A"/>
+        <line x1="16" y1="4" x2="16" y2="28" stroke="#B89A6A" stroke-width="0.5" opacity="0.3"/>
+        <line x1="4" y1="16" x2="28" y2="16" stroke="#B89A6A" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <div class="science-name">Metabolomics</div>
+      <div class="science-detail">Untargeted metabolomics, dual extraction methods, pathway analysis, statistical interpretation. </div>
+    </div>
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <rect x="4" y="8" width="24" height="16" rx="2" stroke="#5C7260" stroke-width="0.8" fill="none"/>
+        <line x1="4" y1="14" x2="28" y2="14" stroke="#5C7260" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="10" cy="11" r="1.5" fill="#B89A6A"/>
+        <circle cx="16" cy="11" r="1.5" fill="#5C7260"/>
+        <circle cx="22" cy="11" r="1.5" fill="#8A9E8C"/>
+        <polyline points="6,22 10,18 14,20 18,16 22,19 26,17" stroke="#B89A6A" stroke-width="0.8" fill="none"/>
+      </svg>
+      <div class="science-name">NMR Spectroscopy</div>
+      <div class="science-detail">In vivo NMR metabolomics, low-volume flow system design. Mnova, Topspin, Amix, ACD Labs. Five first-author publications in this domain.</div>
+    </div>
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M8 28 L8 16 Q8 8 16 8 Q24 8 24 16 L24 28" stroke="#8A9E8C" stroke-width="0.8" fill="none"/>
+        <line x1="4" y1="20" x2="28" y2="20" stroke="#8A9E8C" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="12" cy="20" r="2" fill="#B89A6A"/>
+        <circle cx="20" cy="20" r="2" fill="#5C7260"/>
+      </svg>
+      <div class="science-name">Mass Spectrometry</div>
+      <div class="science-detail">LC-MS/MS, GC-MS, UPLC-QToF. Method development, instrument maintenance and troubleshooting, training. </div>
+    </div>
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <rect x="6" y="6" width="20" height="20" rx="2" stroke="#B89A6A" stroke-width="0.8" fill="none"/>
+        <line x1="6" y1="12" x2="26" y2="12" stroke="#B89A6A" stroke-width="0.5" opacity="0.3"/>
+        <line x1="12" y1="6" x2="12" y2="26" stroke="#B89A6A" stroke-width="0.5" opacity="0.3"/>
+        <rect x="13" y="13" width="4" height="4" fill="#B89A6A" opacity="0.5"/>
+        <rect x="18" y="17" width="3" height="3" fill="#5C7260" opacity="0.6"/>
+      </svg>
+      <div class="science-name">Data Analysis</div>
+      <div class="science-detail">Statistical analysis, pathway analysis, chemometrics. R programming, Skyline, Freestyle, MetaboAnalyst. Comfortable working across both wet lab and computational workflows.</div>
+    </div>
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4 L28 10 L28 22 L16 28 L4 22 L4 10 Z" stroke="#5C7260" stroke-width="0.8" fill="none"/>
+        <path d="M16 4 L16 28" stroke="#5C7260" stroke-width="0.4" opacity="0.4"/>
+        <path d="M4 10 L28 22" stroke="#5C7260" stroke-width="0.4" opacity="0.4"/>
+        <path d="M28 10 L4 22" stroke="#5C7260" stroke-width="0.4" opacity="0.4"/>
+        <circle cx="16" cy="16" r="2.5" fill="#B89A6A"/>
+      </svg>
+      <div class="science-name">Quality & Compliance</div>
+      <div class="science-detail">QA/QC, internal auditing, CAPA management, regulatory compliance. </div>
+    </div>
+    <div class="science-item reveal">
+      <svg class="science-icon" viewBox="0 0 32 32" fill="none">
+        <circle cx="10" cy="16" r="6" stroke="#8A9E8C" stroke-width="0.8" fill="none"/>
+        <circle cx="22" cy="16" r="6" stroke="#B89A6A" stroke-width="0.8" fill="none"/>
+        <path d="M14 12 Q16 14 16 16 Q16 18 14 20" stroke="#6B6860" stroke-width="0.6" fill="none"/>
+        <path d="M18 12 Q16 14 16 16 Q16 18 18 20" stroke="#6B6860" stroke-width="0.6" fill="none"/>
+      </svg>
+      <div class="science-name">Vendor & Supplier Relations</div>
+      <div class="science-detail">Established trusted relationships with lab suppliers, represented the voice of the customer, coordinated instrument feedback and product development input across multiple institutions.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="publications" style="padding-bottom:2rem;">
+  <p class="section-eyebrow reveal">Research Output</p>
+  <h2 class="section-title reveal">Published. Cited. <em>Credible.</em></h2>
+  <p class="section-intro reveal">Over 30 peer-reviewed publications spanning NMR metabolomics, environmental chemistry, analytical method development, and soil biogeochemistry — in journals including Analytical Chemistry, Science of the Total Environment, and Geochimica et Cosmochimica Acta.</p>
+
+  <div class="pub-block reveal">
+    <div class="pub-left">
+      <div class="pub-count">30+</div>
+      <div class="pub-label">Peer-reviewed publications</div>
+      <div class="pub-desc">First-author and co-authored articles, book chapters, and conference presentations across research institutions .</div>
+      <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="pub-link">View full publication list on Google Scholar →</a>
+    </div>
+    <div class="pub-right">
+      <div class="pub-areas">
+        <div class="pub-area">
+          <div class="pub-area-dot pub-area-dot-gold"></div>
+          <div class="pub-area-name">NMR metabolomics & in vivo environmental toxicology</div>
+        </div>
+        <div class="pub-area">
+          <div class="pub-area-dot pub-area-dot-gold"></div>
+          <div class="pub-area-name">Untargeted metabolomics — analytical method development</div>
+        </div>
+        <div class="pub-area">
+          <div class="pub-area-dot pub-area-dot-sage"></div>
+          <div class="pub-area-name">Soil organic matter & biogeochemistry</div>
+        </div>
+        <div class="pub-area">
+          <div class="pub-area-dot pub-area-dot-sage"></div>
+          <div class="pub-area-name">Wastewater analysis & environmental chemistry</div>
+        </div>
+        <div class="pub-area">
+          <div class="pub-area-dot pub-area-dot-white"></div>
+          <div class="pub-area-name">Essential oil composition & antibacterial activity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="credentials">
+  <p class="section-eyebrow reveal">Credentials</p>
+  <h2 class="section-title reveal">Science. Coaching. <em>Both.</em></h2>
+  <p class="section-intro reveal"></p>
+
+  <div class="creds-grid reveal">
+    <div class="cred-item">
+      <div class="cred-category">Education</div>
+      <div class="cred-name">PhD — Analytical Chemistry</div>
+      <div class="cred-detail">NMR-based metabolomics<br>University of Toronto Scarborough</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-category">Education</div>
+      <div class="cred-name">MSc — Marine Chemistry</div>
+      <div class="cred-detail">Azad University<br>Analytical & environmental chemistry</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-category">Certification</div>
+      <div class="cred-name">NASM Certified Personal Trainer</div>
+      <div class="cred-detail">CPT · CES · CNC<br>Corrective Exercise & Nutrition Coaching</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-category">Certification</div>
+      <div class="cred-name">Postgraduate Diploma</div>
+      <div class="cred-detail">Pharmaceutical Quality Control & QA<br>Academy of Applied Pharmaceutical Sciences</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <h2 class="contact-title">Let's <em>connect.</em></h2>
+      <p class="contact-desc"></p>
+      <a href="mailto:hello@withmary.me" class="contact-email-link">hello@withmary.me →</a>
+    </div>
+    <div class="contact-right reveal">
+      <div class="contact-note">
+        "I build trust quickly by making people feel comfortable and understood from the start. That is the same whether the conversation is about science, coaching, or solving a complex problem together."
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="#" class="footer-logo">with<span>mary</span>.me</a>
+  <div class="footer-copy">© 2026 · hello@withmary.me</div>
+</footer>
+
+<script>
+function toggleCard(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.06) + 's';
+});
+document.querySelectorAll('.science-item').forEach((item, i) => {
+  item.style.transitionDelay = (i * 0.08) + 's';
+});
+</script>
+</body>
+</html>
