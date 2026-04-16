@@ -1,4 +1,4 @@
-       <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -26,10 +26,10 @@
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Jost', 'Helvetica Neue', sans-serif;
 }
-
+ 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
+ 
 body {
   background: var(--ivory);
   color: var(--obsidian);
@@ -39,7 +39,7 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-
+ 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -50,7 +50,7 @@ body {
 .d3 { animation-delay: 0.4s; }
 .d4 { animation-delay: 0.55s; }
 .d5 { animation-delay: 0.7s; }
-
+ 
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -63,7 +63,7 @@ nav {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
 }
-
+ 
 .nav-logo {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -73,7 +73,7 @@ nav {
   text-decoration: none;
 }
 .nav-logo span { color: var(--gold); }
-
+ 
 .nav-links {
   display: flex;
   gap: 2.5rem;
@@ -89,7 +89,7 @@ nav {
   transition: color 0.25s;
 }
 .nav-links a:hover { color: var(--gold); }
-
+ 
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
@@ -120,9 +120,9 @@ nav {
   background: radial-gradient(circle, rgba(92,114,96,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
-
+ 
 .hero-left { position: relative; z-index: 1; }
-
+ 
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -145,7 +145,7 @@ nav {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.8); }
 }
-
+ 
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 4.5vw, 4.2rem);
@@ -156,9 +156,9 @@ nav {
   margin-bottom: 2rem;
 }
 .hero-title em { font-style: italic; color: var(--gold); }
-
+ 
 .hero-actions { display: flex; align-items: center; gap: 2rem; }
-
+ 
 .btn-primary {
   display: inline-block;
   padding: 0.9rem 2.2rem;
@@ -178,7 +178,7 @@ nav {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(17,18,16,0.15);
 }
-
+ 
 .btn-secondary {
   font-size: 0.85rem;
   font-weight: 400;
@@ -191,9 +191,9 @@ nav {
   transition: all 0.25s;
 }
 .btn-secondary:hover { color: var(--gold); border-bottom-color: var(--gold); }
-
+ 
 .hero-right { position: relative; z-index: 1; }
-
+ 
 /* ── STATS PANEL — new 2×2 layout ── */
 .stats-panel {
   background: var(--warm-white);
@@ -221,7 +221,7 @@ nav {
   color: var(--mid-gray);
   line-height: 1.6;
 }
-
+ 
 /* make the 30+ stat clickable */
 a.stat-item-link {
   display: block;
@@ -231,17 +231,17 @@ a.stat-item-link {
 }
 a.stat-item-link:hover { opacity: 0.75; }
 a.stat-item-link .stat-num { text-decoration: underline; text-decoration-color: rgba(184,154,106,0.4); }
-
+ 
 .stat-divider { grid-column: 1 / -1; height: 1px; background: var(--rule); }
-
+ 
 .section-divider { height: 1px; background: var(--rule); margin: 0 4rem; }
-
+ 
 section {
   padding: 6rem 4rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
+ 
 .section-eyebrow {
   font-size: 0.8rem;
   font-weight: 500;
@@ -268,7 +268,7 @@ section {
   max-width: 600px;
   margin-bottom: 3.5rem;
 }
-
+ 
 /* ── VIDEO + SIDE TEXT BLOCK ── */
 .video-wrapper {
   display: grid;
@@ -277,7 +277,7 @@ section {
   align-items: center;
   margin-bottom: 3rem;
 }
-
+ 
 .video-container {
   position: relative;
   width: 100%;
@@ -287,7 +287,7 @@ section {
   border-radius: 4px;
   overflow: hidden;
 }
-
+ 
 /* When no video: show a styled placeholder */
 .video-container video {
   width: 100%;
@@ -295,7 +295,7 @@ section {
   object-fit: cover;
   display: block;
 }
-
+ 
 .video-placeholder {
   width: 100%;
   height: 100%;
@@ -325,7 +325,7 @@ section {
   text-transform: uppercase;
   color: var(--mid-gray);
 }
-
+ 
 /* Side badges */
 .video-side {
   display: flex;
@@ -355,7 +355,7 @@ section {
   color: var(--obsidian);
   line-height: 1.3;
 }
-
+ 
 /* ── CARDS ── */
 .cards-grid {
   display: grid;
@@ -366,7 +366,7 @@ section {
   border-radius: 4px;
   overflow: hidden;
 }
-
+ 
 .card {
   background: var(--warm-white);
   padding: 2.5rem 2rem;
@@ -375,7 +375,7 @@ section {
   position: relative;
 }
 .card:hover { background: var(--ivory); }
-
+ 
 .card-accent {
   width: 28px; height: 2px;
   margin-bottom: 1.5rem;
@@ -389,7 +389,7 @@ section {
 .card-4 .card-accent { background: var(--gold-muted); }
 .card-5 .card-accent { background: var(--sage); }
 .card-6 .card-accent { background: var(--sage-light); }
-
+ 
 .card-num {
   font-family: var(--font-display);
   font-size: 0.9rem;
@@ -445,7 +445,7 @@ section {
   transition: all 0.3s;
 }
 .card.open .toggle-plus { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
-
+ 
 /* ── PHILOSOPHY ── */
 .philosophy-block {
   display: grid;
@@ -480,7 +480,7 @@ section {
   margin-bottom: 1.2rem;
 }
 .philosophy-text p:last-child { margin-bottom: 0; }
-
+ 
 /* ── SCIENCE ── */
 .science-grid {
   display: grid;
@@ -505,7 +505,7 @@ section {
   margin-bottom: 0.6rem;
 }
 .science-detail { font-size: 0.97rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
-
+ 
 /* ── PUBLICATIONS ── */
 .pub-block {
   background: var(--obsidian);
@@ -564,7 +564,7 @@ section {
 .pub-area-dot-sage { background: var(--sage); }
 .pub-area-dot-white { background: rgba(244,241,236,0.3); }
 .pub-area-name { font-size: 0.97rem; font-weight: 300; color: rgba(244,241,236,0.7); letter-spacing: 0.03em; }
-
+ 
 /* clickable pub count */
 a.pub-count-link {
   display: block;
@@ -573,7 +573,7 @@ a.pub-count-link {
   transition: opacity 0.25s;
 }
 a.pub-count-link:hover .pub-count { text-decoration: underline; text-decoration-color: rgba(184,154,106,0.5); }
-
+ 
 /* ── CREDENTIALS ── */
 .creds-grid {
   display: grid;
@@ -597,7 +597,7 @@ a.pub-count-link:hover .pub-count { text-decoration: underline; text-decoration-
 }
 .cred-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--obsidian); line-height: 1.4; margin-bottom: 0.5rem; }
 .cred-detail { font-size: 0.97rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
-
+ 
 /* ── CONTACT ── */
 .contact-section { background: var(--warm-white); border-top: 1px solid var(--rule); padding: 6rem 4rem; }
 .contact-inner {
@@ -642,7 +642,7 @@ a.pub-count-link:hover .pub-count { text-decoration: underline; text-decoration-
   font-style: italic;
   margin-top: 1rem;
 }
-
+ 
 footer {
   padding: 2rem 4rem;
   border-top: 1px solid var(--rule);
@@ -654,10 +654,10 @@ footer {
 .footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; color: var(--obsidian); text-decoration: none; }
 .footer-logo span { color: var(--gold); }
 .footer-copy { font-size: 0.8rem; font-weight: 300; letter-spacing: 0.15em; color: var(--mid-gray); }
-
+ 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
+ 
 @media (max-width: 900px) {
   nav { padding: 1.2rem 2rem; }
   .nav-links { display: none; }
@@ -676,7 +676,7 @@ footer {
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <a href="#" class="nav-logo">with<span>mary</span>.me</a>
   <ul class="nav-links">
@@ -687,30 +687,27 @@ footer {
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
+ 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" style="padding-top:8rem; max-width:100%;">
-
+ 
   <!-- LEFT: Video -->
   <div class="hero-left fade-up d2">
-    <div class="video-container" style="aspect-ratio:16/9; width:100%;">
-      <!--
-        TO ADD YOUR VIDEO: replace the placeholder div below with:
-        <video controls poster="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/poster.jpg">
-          <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/intro.mp4" type="video/mp4">
-        </video>
-      -->
-      <div class="video-placeholder">
-        <div class="play-btn"><div class="play-tri"></div></div>
-        <div class="video-placeholder-text">Video coming soon</div>
-      </div>
+    <div class="video-container" style="aspect-ratio:9/16; width:100%; max-width:340px; margin:0 auto;">
+      <iframe
+        src="https://www.youtube.com/embed/rRLIcMXcW2A"
+        style="width:100%; height:100%; border:none; display:block;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="Mary — Introduction">
+      </iframe>
     </div>
   </div>
-
+ 
   <!-- RIGHT: Stats panel + badges -->
   <div class="hero-right fade-up d3">
     <div class="stats-panel">
-
+ 
       <!-- Row 1: PhD (left) | Health & Wellness (right) -->
       <div class="stat-item">
         <div class="stat-num">PhD</div>
@@ -720,9 +717,9 @@ footer {
         <div class="stat-num" style="font-size:1.6rem; line-height:1.2;">Health &amp;<br>Wellness–Driven</div>
         <div class="stat-label">NASM CPT &amp; CNC</div>
       </div>
-
+ 
       <div class="stat-divider"></div>
-
+ 
       <!-- Row 2: 30+ (left) | Human (right) -->
       <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="stat-item-link">
         <div class="stat-num">30<span>+</span></div>
@@ -732,16 +729,16 @@ footer {
         <div class="stat-num">Human</div>
         <div class="stat-label">Rapidly growing<br>client base</div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <!-- ═══════════════════════════════ APPROACH ═══════════════════════════════ -->
 <section id="approach">
-
+ 
   <!-- Headline that was in hero, now sits above "My approach" -->
   <div class="hero-headline-block reveal" style="margin-bottom:3.5rem;">
     <div class="hero-tag" style="margin-bottom:1.2rem;">Scientist · Coach · Trusted Guide</div>
@@ -755,15 +752,15 @@ footer {
       <a href="#science" class="btn-secondary">See my approach</a>
     </div>
   </div>
-
+ 
   <p class="section-eyebrow reveal">My approach</p>
   <h2 class="section-title reveal">Trust first.<br><em>Clarity always.</em></h2>
   <p class="section-intro reveal">
     Good decisions begin with genuine understanding. The right questions surface what others miss, complexity becomes clarity, and trust is earned before anything else is on the table.
   </p>
-
+ 
   <div class="cards-grid">
-
+ 
     <div class="card card-1 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">01</div>
@@ -778,7 +775,7 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
     <div class="card card-2 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">02</div>
@@ -791,7 +788,7 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
     <div class="card card-3 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">03</div>
@@ -804,7 +801,7 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
     <div class="card card-4 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">04</div>
@@ -817,7 +814,7 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
     <div class="card card-5 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">05</div>
@@ -830,7 +827,7 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
     <div class="card card-6 reveal" onclick="toggleCard(this)">
       <div class="card-accent"></div>
       <div class="card-num">06</div>
@@ -843,12 +840,12 @@ footer {
       </div>
       <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <section>
   <div class="philosophy-block">
     <div class="philosophy-quote reveal">
@@ -860,9 +857,9 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <!-- ═══════════════════════════════ SCIENCE ═══════════════════════════════ -->
 <section id="science">
   <p class="section-eyebrow reveal">Scientific Background</p>
@@ -870,7 +867,7 @@ footer {
   <p class="section-intro reveal">
     Hands-on experience across metabolomics, NMR spectroscopy, and mass spectrometry, supported by years of research, method development, and technical training. A background that brings clarity, credibility, and substance to complex conversations.
   </p>
-
+ 
   <div class="science-grid">
     <div class="science-item reveal">
       <svg class="science-icon" viewBox="0 0 32 32" fill="none">
@@ -939,15 +936,15 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <!-- ═══════════════════════════════ PUBLICATIONS ═══════════════════════════════ -->
 <section id="publications" style="padding-bottom:2rem;">
   <p class="section-eyebrow reveal">Research Output</p>
   <h2 class="section-title reveal">Published. Cited. <em>Credible.</em></h2>
   <p class="section-intro reveal">Over 30 peer-reviewed publications.</p>
-
+ 
   <div class="pub-block reveal">
     <div class="pub-left">
       <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="pub-count-link">
@@ -967,31 +964,20 @@ footer {
           <div class="pub-area-dot pub-area-dot-gold"></div>
           <div class="pub-area-name">Untargeted metabolomics — analytical method development</div>
         </div>
-        <div class="pub-area">
-          <div class="pub-area-dot pub-area-dot-sage"></div>
-          <div class="pub-area-name">Soil organic matter &amp; biogeochemistry</div>
-        </div>
-        <div class="pub-area">
-          <div class="pub-area-dot pub-area-dot-sage"></div>
-          <div class="pub-area-name">Wastewater analysis &amp; environmental chemistry</div>
-        </div>
-        <div class="pub-area">
-          <div class="pub-area-dot pub-area-dot-white"></div>
-          <div class="pub-area-name">Essential oil composition &amp; antibacterial activity</div>
-        </div>
+ 
       </div>
     </div>
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <!-- ═══════════════════════════════ CREDENTIALS ═══════════════════════════════ -->
 <section id="credentials">
   <p class="section-eyebrow reveal">Credentials</p>
   <h2 class="section-title reveal">Science. Coaching. <em>Both.</em></h2>
   <p class="section-intro reveal"></p>
-
+ 
   <div class="creds-grid reveal">
     <div class="cred-item">
       <div class="cred-category">Education</div>
@@ -1010,9 +996,9 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <div class="section-divider"></div>
-
+ 
 <!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
 <div class="contact-section" id="contact">
   <div class="contact-inner">
@@ -1028,27 +1014,27 @@ footer {
     </div>
   </div>
 </div>
-
+ 
 <footer>
   <a href="#" class="footer-logo">with<span>mary</span>.me</a>
   <div class="footer-copy">© 2026 · hello@withmary.me</div>
 </footer>
-
+ 
 <script>
 function toggleCard(card) {
   const isOpen = card.classList.contains('open');
   document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
   if (!isOpen) card.classList.add('open');
 }
-
+ 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
+ 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
 document.querySelectorAll('.card').forEach((card, i) => {
   card.style.transitionDelay = (i * 0.06) + 's';
 });
