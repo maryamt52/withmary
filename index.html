@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -35,7 +35,7 @@ body {
   color: var(--obsidian);
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 36px;
+  font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -80,7 +80,7 @@ nav {
   list-style: none;
 }
 .nav-links a {
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -90,6 +90,7 @@ nav {
 }
 .nav-links a:hover { color: var(--gold); }
 
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: grid;
@@ -126,7 +127,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -152,18 +153,9 @@ nav {
   line-height: 1.08;
   letter-spacing: -0.01em;
   color: var(--obsidian);
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
 }
 .hero-title em { font-style: italic; color: var(--gold); }
-
-.hero-sub {
-  font-size: 1.15rem;
-  font-weight: 300;
-  color: var(--warm-gray);
-  line-height: 1.9;
-  max-width: 420px;
-  margin-bottom: 2.5rem;
-}
 
 .hero-actions { display: flex; align-items: center; gap: 2rem; }
 
@@ -173,7 +165,7 @@ nav {
   background: var(--obsidian);
   color: var(--ivory);
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -188,7 +180,7 @@ nav {
 }
 
 .btn-secondary {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -202,6 +194,7 @@ nav {
 
 .hero-right { position: relative; z-index: 1; }
 
+/* ── STATS PANEL — new 2×2 layout ── */
 .stats-panel {
   background: var(--warm-white);
   border: 1px solid var(--rule);
@@ -221,13 +214,24 @@ nav {
 }
 .stat-num span { color: var(--gold); font-size: 1.9rem; }
 .stat-label {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mid-gray);
-  line-height: 1.5;
+  line-height: 1.6;
 }
+
+/* make the 30+ stat clickable */
+a.stat-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.25s;
+}
+a.stat-item-link:hover { opacity: 0.75; }
+a.stat-item-link .stat-num { text-decoration: underline; text-decoration-color: rgba(184,154,106,0.4); }
+
 .stat-divider { grid-column: 1 / -1; height: 1px; background: var(--rule); }
 
 .section-divider { height: 1px; background: var(--rule); margin: 0 4rem; }
@@ -239,7 +243,7 @@ section {
 }
 
 .section-eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -257,7 +261,7 @@ section {
 }
 .section-title em { font-style: italic; color: var(--sage-deep); }
 .section-intro {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 300;
   color: var(--warm-gray);
   line-height: 1.9;
@@ -265,51 +269,94 @@ section {
   margin-bottom: 3.5rem;
 }
 
-.video-block {
+/* ── VIDEO + SIDE TEXT BLOCK ── */
+.video-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background: var(--warm-white);
   border: 1px solid var(--rule);
   border-radius: 4px;
-  height: 220px;
+  overflow: hidden;
+}
+
+/* When no video: show a styled placeholder */
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  cursor: pointer;
-  transition: all 0.3s;
+  gap: 1rem;
+  color: var(--mid-gray);
 }
-.video-block:hover { border-color: rgba(184,154,106,0.4); box-shadow: 0 4px 24px rgba(184,154,106,0.08); }
-.play-btn {
-  width: 60px; height: 60px;
-  border: 1px solid rgba(17,18,16,0.2);
+.video-placeholder .play-btn {
+  width: 64px; height: 64px;
+  border: 1px solid rgba(17,18,16,0.18);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s; flex-shrink: 0;
 }
-.video-block:hover .play-btn { border-color: var(--gold); background: rgba(184,154,106,0.06); }
 .play-tri {
   width: 0; height: 0;
   border-style: solid;
-  border-width: 9px 0 9px 16px;
-  border-color: transparent transparent transparent var(--obsidian);
-  margin-left: 4px; transition: border-color 0.3s;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--mid-gray);
+  margin-left: 4px;
 }
-.video-block:hover .play-tri { border-color: transparent transparent transparent var(--gold); }
-.video-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--obsidian);
-  margin-bottom: 0.3rem;
-}
-.video-sub {
-  font-size: 0.72rem;
-  font-weight: 400;
+.video-placeholder-text {
+  font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mid-gray);
 }
 
+/* Side badges */
+.video-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.video-badge {
+  padding: 1.2rem 1.5rem;
+  background: var(--warm-white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.video-badge:hover { border-color: rgba(184,154,106,0.35); box-shadow: 0 4px 16px rgba(184,154,106,0.07); }
+.badge-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 0.3rem;
+}
+.badge-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--obsidian);
+  line-height: 1.3;
+}
+
+/* ── CARDS ── */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -345,7 +392,7 @@ section {
 
 .card-num {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 300;
   letter-spacing: 0.15em;
   color: var(--mid-gray);
@@ -353,14 +400,14 @@ section {
 }
 .card-title {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--obsidian);
   margin-bottom: 0.8rem;
   line-height: 1.25;
 }
 .card-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--warm-gray);
   line-height: 1.75;
@@ -371,7 +418,7 @@ section {
 .card-expand-inner {
   border-top: 1px solid var(--rule);
   padding-top: 1.2rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--warm-gray);
   line-height: 1.85;
@@ -380,7 +427,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -389,16 +436,17 @@ section {
 }
 .card:hover .card-toggle { color: var(--warm-gray); }
 .toggle-plus {
-  width: 16px; height: 16px;
+  width: 18px; height: 18px;
   border: 1px solid var(--mid-gray);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1;
   transition: all 0.3s;
 }
 .card.open .toggle-plus { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
 
+/* ── PHILOSOPHY ── */
 .philosophy-block {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -425,7 +473,7 @@ section {
   border-radius: 1px;
 }
 .philosophy-text p {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 300;
   color: var(--warm-gray);
   line-height: 1.9;
@@ -433,6 +481,7 @@ section {
 }
 .philosophy-text p:last-child { margin-bottom: 0; }
 
+/* ── SCIENCE ── */
 .science-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -450,13 +499,14 @@ section {
 .science-icon { width: 32px; height: 32px; margin-bottom: 1.2rem; opacity: 0.5; }
 .science-name {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: var(--obsidian);
   margin-bottom: 0.6rem;
 }
-.science-detail { font-size: 0.88rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+.science-detail { font-size: 0.97rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
 
+/* ── PUBLICATIONS ── */
 .pub-block {
   background: var(--obsidian);
   border-radius: 4px;
@@ -476,19 +526,19 @@ section {
   margin-bottom: 0.5rem;
 }
 .pub-label {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(244,241,236,0.4);
   margin-bottom: 1.5rem;
 }
-.pub-desc { font-size: 0.95rem; font-weight: 300; color: rgba(244,241,236,0.6); line-height: 1.85; margin-bottom: 2rem; }
+.pub-desc { font-size: 1rem; font-weight: 300; color: rgba(244,241,236,0.6); line-height: 1.85; margin-bottom: 2rem; }
 .pub-link {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -513,8 +563,18 @@ section {
 .pub-area-dot-gold { background: var(--gold); }
 .pub-area-dot-sage { background: var(--sage); }
 .pub-area-dot-white { background: rgba(244,241,236,0.3); }
-.pub-area-name { font-size: 0.88rem; font-weight: 300; color: rgba(244,241,236,0.7); letter-spacing: 0.03em; }
+.pub-area-name { font-size: 0.97rem; font-weight: 300; color: rgba(244,241,236,0.7); letter-spacing: 0.03em; }
 
+/* clickable pub count */
+a.pub-count-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.25s;
+}
+a.pub-count-link:hover .pub-count { text-decoration: underline; text-decoration-color: rgba(184,154,106,0.5); }
+
+/* ── CREDENTIALS ── */
 .creds-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -528,16 +588,17 @@ section {
 .cred-item { background: var(--warm-white); padding: 2rem 1.5rem; transition: background 0.3s; }
 .cred-item:hover { background: var(--ivory); }
 .cred-category {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--mid-gray);
   margin-bottom: 0.8rem;
 }
-.cred-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--obsidian); line-height: 1.4; margin-bottom: 0.5rem; }
-.cred-detail { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
+.cred-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--obsidian); line-height: 1.4; margin-bottom: 0.5rem; }
+.cred-detail { font-size: 0.97rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
 
+/* ── CONTACT ── */
 .contact-section { background: var(--warm-white); border-top: 1px solid var(--rule); padding: 6rem 4rem; }
 .contact-inner {
   max-width: 1200px;
@@ -556,13 +617,13 @@ section {
   margin-bottom: 1rem;
 }
 .contact-title em { font-style: italic; color: var(--gold); }
-.contact-desc { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.9; margin-bottom: 2.5rem; max-width: 400px; }
+.contact-desc { font-size: 1.05rem; font-weight: 300; color: var(--warm-gray); line-height: 1.9; margin-bottom: 2.5rem; max-width: 400px; }
 .contact-email-link {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: var(--obsidian);
   text-decoration: none;
@@ -572,7 +633,7 @@ section {
 }
 .contact-email-link:hover { color: var(--gold); border-bottom-color: var(--gold); gap: 1.2rem; }
 .contact-note {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--mid-gray);
   line-height: 1.8;
@@ -592,7 +653,7 @@ footer {
 }
 .footer-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; color: var(--obsidian); text-decoration: none; }
 .footer-logo span { color: var(--gold); }
-.footer-copy { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.15em; color: var(--mid-gray); }
+.footer-copy { font-size: 0.8rem; font-weight: 300; letter-spacing: 0.15em; color: var(--mid-gray); }
 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -610,6 +671,7 @@ footer {
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .section-divider { margin: 0 2rem; }
   footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  .video-wrapper { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -626,144 +688,163 @@ footer {
   </ul>
 </nav>
 
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" style="padding-top:8rem; max-width:100%;">
-  <div class="hero-left">
-    <div class="hero-tag fade-up d1">Scientist · Coach · Trusted Guide</div>
-    <h1 class="hero-title fade-up d2">
-      Building trust quickly,<br>
-      making complex ideas clear,<br>
-      <em>and turning conversation into momentum.</em>
-    </h1>
-    <p class="hero-sub fade-up d3">
-      PhD-trained scientist. Certified coach.<br>
-     The common thread: taking what's complex and making it clear, actionable, and trustworthy.
-    </p>
-    <div class="hero-actions fade-up d4">
-      <a href="#contact" class="btn-primary">Get in touch</a>
-      <a href="#approach" class="btn-secondary">See my approach</a>
+
+  <!-- LEFT: Video -->
+  <div class="hero-left fade-up d2">
+    <div class="video-container" style="aspect-ratio:16/9; width:100%;">
+      <!--
+        TO ADD YOUR VIDEO: replace the placeholder div below with:
+        <video controls poster="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/poster.jpg">
+          <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/intro.mp4" type="video/mp4">
+        </video>
+      -->
+      <div class="video-placeholder">
+        <div class="play-btn"><div class="play-tri"></div></div>
+        <div class="video-placeholder-text">Video coming soon</div>
+      </div>
     </div>
   </div>
+
+  <!-- RIGHT: Stats panel + badges -->
   <div class="hero-right fade-up d3">
     <div class="stats-panel">
-  <div class="stat-item">
-    <div class="stat-num">30<span>+</span></div>
-    <div class="stat-label">Peer-reviewed<br>publications</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">PhD</div>
-    <div class="stat-label">Bioanalytical Chemistry- Metabolomics<br>University of Toronto</div>
-  </div>
-  <div class="stat-divider"></div>
-    <div class="stat-item">
-    <div class="stat-num">Technical</div>
-    <div class="stat-label">Scientific fluency<br>across disciplines</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">Human</div>
-    <div class="stat-label">Clear communication<br>and strong rapport</div>
-  </div>
-</div>
+
+      <!-- Row 1: PhD (left) | Health & Wellness (right) -->
+      <div class="stat-item">
+        <div class="stat-num">PhD</div>
+        <div class="stat-label">Bioanalytical Chemistry — Metabolomics<br>University of Toronto</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="font-size:1.6rem; line-height:1.2;">Health &amp;<br>Wellness–Driven</div>
+        <div class="stat-label">NASM CPT &amp; CNC</div>
+      </div>
+
+      <div class="stat-divider"></div>
+
+      <!-- Row 2: 30+ (left) | Human (right) -->
+      <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="stat-item-link">
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-label">Peer-reviewed<br>publications</div>
+      </a>
+      <div class="stat-item">
+        <div class="stat-num">Human</div>
+        <div class="stat-label">Rapidly growing<br>client base</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
+<!-- ═══════════════════════════════ APPROACH ═══════════════════════════════ -->
 <section id="approach">
+
+  <!-- Headline that was in hero, now sits above "My approach" -->
+  <div class="hero-headline-block reveal" style="margin-bottom:3.5rem;">
+    <div class="hero-tag" style="margin-bottom:1.2rem;">Scientist · Coach · Trusted Guide</div>
+    <h1 class="hero-title" style="margin-bottom:1.8rem;">
+      I build trust fast,<br>
+      simplify complex ideas,<br>
+      <em>and close.</em>
+    </h1>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#science" class="btn-secondary">See my approach</a>
+    </div>
+  </div>
+
   <p class="section-eyebrow reveal">My approach</p>
   <h2 class="section-title reveal">Trust first.<br><em>Clarity always.</em></h2>
-<p class="section-intro reveal">
- Good decisions begin with genuine understanding. The right questions surface what others miss, complexity becomes clarity, and trust is earned before anything else is on the table.
+  <p class="section-intro reveal">
+    Good decisions begin with genuine understanding. The right questions surface what others miss, complexity becomes clarity, and trust is earned before anything else is on the table.
+  </p>
 
-  <div class="video-block reveal">
-    <div class="play-btn"><div class="play-tri"></div></div>
-    <div>
-      <div class="video-title">Meet Mary — Short introduction</div>
-    </div>
-  </div>
+  <div class="cards-grid">
 
- <div class="cards-grid">
-
-  <div class="card card-1 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">01</div>
-    <div class="card-title"> Foundation</div>
-    <div class="card-desc">A mind trained to solve complex problems, design rigorous methods, and ask the questions others miss.
-Years of intensive research and method development built something beyond technical knowledge — a way of thinking that cuts through noise, identifies what's actually going on, and finds the most effective path forward.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        That same precision shows up in every client assessment, every program design, and every conversation. It's why clients get results, why referrals happen naturally, and why trust builds fast — in a lab, a sales meeting, or a training session.
-PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nutrition Coach, and Corrective Exercise Specialist.
+    <div class="card card-1 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">01</div>
+      <div class="card-title">Foundation</div>
+      <div class="card-desc">A mind trained to solve complex problems, design rigorous methods, and ask the questions others miss.
+      Years of intensive research and method development built something beyond technical knowledge — a way of thinking that cuts through noise, identifies what's actually going on, and finds the most effective path forward.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          That same precision shows up in every client assessment, every program design, and every conversation. It's why clients get results, why referrals happen naturally, and why trust builds fast — in a lab, a sales meeting, or a training session.
+          PhD in Bioanalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nutrition Coach, and Corrective Exercise Specialist.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-  <div class="card card-2 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">02</div>
-    <div class="card-title">Trust & Retention</div>
-    <div class="card-desc">Strong client relationships built through clarity, patience, and a highly personalized approach.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        Consultations are designed to create clarity, confidence, and momentum. That often leads to continued engagement, repeat work, and long-term trust over time.
+    <div class="card card-2 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">02</div>
+      <div class="card-title">Trust &amp; Retention</div>
+      <div class="card-desc">Strong client relationships built through clarity, patience, and a highly personalized approach.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Consultations are designed to create clarity, confidence, and momentum. That often leads to continued engagement, repeat work, and long-term trust over time.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-  <div class="card card-3 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">03</div>
-    <div class="card-title">Natural Rapport</div>
-    <div class="card-desc">Strong connection-building from the first conversation.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        Across different environments, one pattern has stayed consistent: people feel comfortable quickly. That ease creates better conversations, stronger trust, and a smoother path to long-term relationships.
+    <div class="card card-3 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">03</div>
+      <div class="card-title">Natural Rapport</div>
+      <div class="card-desc">Strong connection-building from the first conversation.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Across different environments, one pattern has stayed consistent: people feel comfortable quickly. That ease creates better conversations, stronger trust, and a smoother path to long-term relationships.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-  <div class="card card-4 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">04</div>
-    <div class="card-title">Adaptability</div>
-    <div class="card-desc">Experience across research, quality, training, and coaching — with the ability to get up to speed quickly and communicate clearly.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        Different environments require different language, priorities, and ways of building trust. The strength here is adapting quickly while keeping communication clear, credible, and consistent.
+    <div class="card card-4 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">04</div>
+      <div class="card-title">Adaptability</div>
+      <div class="card-desc">Experience across research, quality, training, and coaching — with the ability to get up to speed quickly and communicate clearly.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Different environments require different language, priorities, and ways of building trust. The strength here is adapting quickly while keeping communication clear, credible, and consistent.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-  <div class="card card-5 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">05</div>
-    <div class="card-title">Teaching & Training</div>
-    <div class="card-desc">Clear teaching, patient guidance, and practical instruction across different levels of experience.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        Experience includes training scientists on analytical instruments and data interpretation, teaching instrumental analysis, and coaching clients on technique, form, and progression. The consistent thread is making complex information easier to understand and use with confidence.
+    <div class="card card-5 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">05</div>
+      <div class="card-title">Teaching &amp; Training</div>
+      <div class="card-desc">Clear teaching, patient guidance, and practical instruction across different levels of experience.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Experience includes training scientists on analytical instruments and data interpretation, teaching instrumental analysis, and coaching clients on technique, form, and progression. The consistent thread is making complex information easier to understand and use with confidence.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-  <div class="card card-6 reveal" onclick="toggleCard(this)">
-    <div class="card-accent"></div>
-    <div class="card-num">06</div>
-    <div class="card-title">Follow-Through</div>
-    <div class="card-desc">High standards, strong organization, and consistent follow-through from start to finish.</div>
-    <div class="card-expand">
-      <div class="card-expand-inner">
-        Work is approached with structure, care, and attention to detail. Once something starts, the focus stays on seeing it through properly — with consistency, organization, and a strong sense of responsibility.
+    <div class="card card-6 reveal" onclick="toggleCard(this)">
+      <div class="card-accent"></div>
+      <div class="card-num">06</div>
+      <div class="card-title">Follow-Through</div>
+      <div class="card-desc">High standards, strong organization, and consistent follow-through from start to finish.</div>
+      <div class="card-expand">
+        <div class="card-expand-inner">
+          Work is approached with structure, care, and attention to detail. Once something starts, the focus stays on seeing it through properly — with consistency, organization, and a strong sense of responsibility.
+        </div>
       </div>
+      <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
     </div>
-    <div class="card-toggle"><div class="toggle-plus">+</div> Learn more</div>
-  </div>
 
-</div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -771,16 +852,18 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
 <section>
   <div class="philosophy-block">
     <div class="philosophy-quote reveal">
-  "The goal is never just to explain what to do, but to make the reasoning clear enough that the next step feels confident, informed, and natural."
-</div>
-<div class="philosophy-text reveal">
-  <p>This approach stays the same across different contexts — whether the conversation is technical, practical, or personal.</p>
-  <p>Trust builds when people feel understood, respected, and clear on what comes next. That is where strong relationships begin.</p>
-</div>
+      "The goal is never just to explain what to do, but to make the reasoning clear enough that the next step feels confident, informed, and natural."
+    </div>
+    <div class="philosophy-text reveal">
+      <p>This approach stays the same across different contexts — whether the conversation is technical, practical, or personal.</p>
+      <p>Trust builds when people feel understood, respected, and clear on what comes next. That is where strong relationships begin.</p>
+    </div>
   </div>
 </section>
+
 <div class="section-divider"></div>
 
+<!-- ═══════════════════════════════ SCIENCE ═══════════════════════════════ -->
 <section id="science">
   <p class="section-eyebrow reveal">Scientific Background</p>
   <h2 class="section-title reveal">Scientific depth,<br><em>practical fluency.</em></h2>
@@ -798,7 +881,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
         <line x1="4" y1="16" x2="28" y2="16" stroke="#B89A6A" stroke-width="0.5" opacity="0.3"/>
       </svg>
       <div class="science-name">Metabolomics</div>
-      <div class="science-detail">Untargeted metabolomics, dual extraction methods, pathway analysis, statistical interpretation. </div>
+      <div class="science-detail">Untargeted metabolomics, dual extraction methods, pathway analysis, statistical interpretation.</div>
     </div>
     <div class="science-item reveal">
       <svg class="science-icon" viewBox="0 0 32 32" fill="none">
@@ -820,7 +903,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
         <circle cx="20" cy="20" r="2" fill="#5C7260"/>
       </svg>
       <div class="science-name">Mass Spectrometry</div>
-      <div class="science-detail">LC-MS/MS, GC-MS, UPLC-QToF. Method development, instrument maintenance and troubleshooting, training. </div>
+      <div class="science-detail">LC-MS/MS, GC-MS, UPLC-QToF. Method development, instrument maintenance and troubleshooting, training.</div>
     </div>
     <div class="science-item reveal">
       <svg class="science-icon" viewBox="0 0 32 32" fill="none">
@@ -841,8 +924,8 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
         <path d="M28 10 L4 22" stroke="#5C7260" stroke-width="0.4" opacity="0.4"/>
         <circle cx="16" cy="16" r="2.5" fill="#B89A6A"/>
       </svg>
-      <div class="science-name">Quality & Compliance</div>
-      <div class="science-detail">QA/QC, internal auditing, CAPA management, regulatory compliance. </div>
+      <div class="science-name">Quality &amp; Compliance</div>
+      <div class="science-detail">QA/QC, internal auditing, CAPA management, regulatory compliance.</div>
     </div>
     <div class="science-item reveal">
       <svg class="science-icon" viewBox="0 0 32 32" fill="none">
@@ -851,7 +934,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
         <path d="M14 12 Q16 14 16 16 Q16 18 14 20" stroke="#6B6860" stroke-width="0.6" fill="none"/>
         <path d="M18 12 Q16 14 16 16 Q16 18 18 20" stroke="#6B6860" stroke-width="0.6" fill="none"/>
       </svg>
-      <div class="science-name">Vendor & Supplier Relations</div>
+      <div class="science-name">Vendor &amp; Supplier Relations</div>
       <div class="science-detail">Established trusted relationships with lab suppliers, represented the voice of the customer, coordinated instrument feedback and product development input across multiple institutions.</div>
     </div>
   </div>
@@ -859,6 +942,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
 
 <div class="section-divider"></div>
 
+<!-- ═══════════════════════════════ PUBLICATIONS ═══════════════════════════════ -->
 <section id="publications" style="padding-bottom:2rem;">
   <p class="section-eyebrow reveal">Research Output</p>
   <h2 class="section-title reveal">Published. Cited. <em>Credible.</em></h2>
@@ -866,16 +950,18 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
 
   <div class="pub-block reveal">
     <div class="pub-left">
-      <div class="pub-count">30+</div>
-      <div class="pub-label">Peer-reviewed publications</div>
-      <div class="pub-desc">First-author and co-authored articles, book chapters, and conference presentations across research institutions .</div>
+      <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="pub-count-link">
+        <div class="pub-count">30+</div>
+        <div class="pub-label">Peer-reviewed publications</div>
+      </a>
+      <div class="pub-desc">First-author and co-authored articles, book chapters, and conference presentations across research institutions.</div>
       <a href="https://scholar.google.ca/citations?hl=en&user=0qyZpqoAAAAJ" target="_blank" class="pub-link">View full publication list on Google Scholar →</a>
     </div>
     <div class="pub-right">
       <div class="pub-areas">
         <div class="pub-area">
           <div class="pub-area-dot pub-area-dot-gold"></div>
-          <div class="pub-area-name">NMR metabolomics & in vivo environmental toxicology</div>
+          <div class="pub-area-name">NMR metabolomics &amp; in vivo environmental toxicology</div>
         </div>
         <div class="pub-area">
           <div class="pub-area-dot pub-area-dot-gold"></div>
@@ -883,15 +969,15 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
         </div>
         <div class="pub-area">
           <div class="pub-area-dot pub-area-dot-sage"></div>
-          <div class="pub-area-name">Soil organic matter & biogeochemistry</div>
+          <div class="pub-area-name">Soil organic matter &amp; biogeochemistry</div>
         </div>
         <div class="pub-area">
           <div class="pub-area-dot pub-area-dot-sage"></div>
-          <div class="pub-area-name">Wastewater analysis & environmental chemistry</div>
+          <div class="pub-area-name">Wastewater analysis &amp; environmental chemistry</div>
         </div>
         <div class="pub-area">
           <div class="pub-area-dot pub-area-dot-white"></div>
-          <div class="pub-area-name">Essential oil composition & antibacterial activity</div>
+          <div class="pub-area-name">Essential oil composition &amp; antibacterial activity</div>
         </div>
       </div>
     </div>
@@ -900,6 +986,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
 
 <div class="section-divider"></div>
 
+<!-- ═══════════════════════════════ CREDENTIALS ═══════════════════════════════ -->
 <section id="credentials">
   <p class="section-eyebrow reveal">Credentials</p>
   <h2 class="section-title reveal">Science. Coaching. <em>Both.</em></h2>
@@ -914,18 +1001,19 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
     <div class="cred-item">
       <div class="cred-category">Education</div>
       <div class="cred-name">MSc — Marine Chemistry</div>
-      <div class="cred-detail">Analytical & environmental chemistry</div>
+      <div class="cred-detail">Analytical &amp; environmental chemistry</div>
     </div>
     <div class="cred-item">
       <div class="cred-category">Certification</div>
       <div class="cred-name">NASM Certified Personal Trainer</div>
-      <div class="cred-detail">CPT · CES · CNC<br>Corrective Exercise & Nutrition Coaching</div>
+      <div class="cred-detail">CPT · CES · CNC<br>Corrective Exercise &amp; Nutrition Coaching</div>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
 <div class="contact-section" id="contact">
   <div class="contact-inner">
     <div class="contact-left reveal">
@@ -935,7 +1023,7 @@ PhD in Bionalytical Chemistry-Metabolomics. NASM Certified Personal Trainer, Nut
     </div>
     <div class="contact-right reveal">
       <div class="contact-note">
-       "Trust builds quickly when people feel comfortable, understood, and clear on what comes next. That stays true whether the conversation is about science, coaching, or solving a complex problem."
+        "Trust builds quickly when people feel comfortable, understood, and clear on what comes next. That stays true whether the conversation is about science, coaching, or solving a complex problem."
       </div>
     </div>
   </div>
